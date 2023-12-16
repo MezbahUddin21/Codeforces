@@ -1,83 +1,78 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <bits/stdc++.h>
+#include <random>
+#include <chrono>
+//#include <ext/pb_ds/tree_policy.hpp>
+//#include <ext/pb_ds/assoc_container.hpp>
+
+#define _ << " " <<
+#define all(v) v.begin(), v.end()
+#define rall(v) v.rbegin(), v.rend()
+#define sp(n) fixed << setprecision(n)
+#define ff first
+#define ss second
+#define pb push_back
+
 using namespace std;
-#define ll long long
-#define setprecision(x) cout << fixed << setprecision(x)
-void mezbah(){
-    ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif
-}
+//using namespace __gnu_pbds;
+using ll = long long;
+using ull = unsigned long long;
+using ld = long double;
+using pii = pair<int, int>;
+using pll = pair<ll, ll>;
+//using ordered_set = tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update>;
+//using ordered_multiset = tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update>;
 
-
-void seive(int n){
-    vector<int>v(n+3);
-    for(int i=2; i*i<=n; i++){
-        if(v[i]==0){
-            for(int j=i*i; j<=n; j+=i){
-                v[j]=1;
-            }
-        }
-    }
-    for(int i=2; i<=n; i++){
-        if(v[i]==0)cout<<i<<" ";
-    }
-    cout<<endl;
-}
-
-vector<ll> mPrimeFact(ll x) {
-	vector<ll> fact;
-	for(ll i = 2; i * i <= x; i++) {
-		ll cnt = 0; 
-		while(x % i == 0) {
-			cnt++;
-			x /= i;
-			fact.push_back(i);
-		}
-	}
-	if(x > 1) fact.push_back(x);
-	return fact;
-}
-
-ll lcm(ll a,ll b){
-    ll g=__gcd(a,b);
-    return (a*b/g);
-}
-
-
-
-
-void solve(){
-	ll x,y,x1,y1; cin>>x>>y>>x1>>y1;
-    ll t=min(y,y1);
-    y-=t,y1-=t;
-    if(y>6)cout<<">"<<endl;
-    else if(y1>6)cout<<"<"<<endl;
-    else{
-        x=x*(pow(10,y));
-        x1=x1*(pow(10,y1));
-
-        if(x<x1)cout<<"<"<<endl;
-        else if(x>x1)cout<<">"<<endl;
-        else cout<<"="<<endl;
-    }
-
-
-
-}
+const int mod = 1e9 + 7;
+const double eps = 1e-8;
+const int INF = 1e9;
+const int MAX_LEN = 1e6;
 
 int main() {
-    mezbah();
-    int t;
-    cin>>t;
-    
-    while(t--){
-        solve();
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+#ifdef LOCAL_DEBUG
+    freopen("input.txt", "r", stdin);
+    //freopen("output_false.txt", "w", stdout); //outs
+#endif
+    int tt;
+    cin >> tt;
+    while (tt--) {
+        int x1, p1, x2, p2;
+        cin >> x1 >> p1 >> x2 >> p2;
+        if (x1 == x2 && p1 == p2) {
+            cout << "=\n";
+            continue;
+        }
+        string x = to_string(x1);
+        string y = to_string(x2);
+        if (x.size() + p1 > y.size() + p2) {
+            cout << ">\n";
+            continue;
+        }
+        if (x.size() + p1 < y.size() + p2) {
+            cout << "<\n";
+            continue;
+        }
+
+        while (x.size() < y.size()) x.push_back('0');
+        while (x.size() > y.size()) y.push_back('0');
+        bool ok = false;
+        for (int i = 0; i < x.size(); i++) {
+            if (x[i] > y[i]) {
+                cout << ">\n";
+                ok = true;
+                break;
+            }
+            if (x[i] < y[i]) {
+                cout << "<\n";
+                ok = true;
+                break;
+            }
+        }
+        if (!ok) {
+            cout << "=\n";
+        }
     }
     return 0;
 }
-
-
- 
-
