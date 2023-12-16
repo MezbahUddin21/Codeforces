@@ -49,28 +49,21 @@ ll lcm(ll a,ll b){
 
 
 void solve(){
- ll x1, p1, x2, p2; cin >> x1 >> p1 >> x2 >> p2;
-    int t = min(p1, p2); p1 -= t; p2 -= t;
-    if (p1 > 6){
-        cout << '>' << endl;
-    }
-    else if (p2 > 6){
-        cout << '<' << endl;
-    }
+	ll x,y,x1,y1; cin>>x>>y>>x1>>y1;
+    ll t=min(y,y1);
+    y-=t,y1-=t;
+    if(y>6)cout<<">"<<endl;
+    else if(y1>6)cout<<"<"<<endl;
     else{
-        x1 *= pow(10, p1);
-        x2 *= pow(10, p2);
-        if (x1 > x2){
-            cout << '>' << endl;
-        }
-        else if (x1 < x2){
-            cout << '<' << endl;
-        }
-        else{
-            cout << '=' << endl;
-        }
+        x=x*(pow(10,y));
+        x1=x1*(pow(10,y1));
 
+        if(x<x1)cout<<"<"<<endl;
+        else if(x>x1)cout<<">"<<endl;
+        else cout<<"="<<endl;
     }
+
+
 
 }
 
