@@ -50,7 +50,6 @@ ll lcm(ll a,ll b){
 
 void solve(){
     ll n; cin>>n;
-    vector<int>v(n);
     ll x;
     int z=0,p=0,f=0;
     for(int i=0; i<n;i++){
