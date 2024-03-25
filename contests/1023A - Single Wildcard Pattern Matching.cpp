@@ -82,7 +82,7 @@ void mine(){
         pno
         return;
     }
-    int l=0;
+    int l=0,b=-1;
     for(int i=0; i<n; i++){
         if(sn[i]=='*'){
             break;
@@ -93,7 +93,8 @@ void mine(){
         }
     }
 
-    for(int i=n-1,k=m-1; k>=0; i--,k--){
+    int k=m-1;
+    for(int i=n-1; k>=0; i--,k--){
         if(sn[i]=='*')break;
         if(sn[i]!=sm[k]){
             l=1;
