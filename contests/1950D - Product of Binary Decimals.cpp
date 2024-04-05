@@ -2,8 +2,9 @@
 using namespace std;
 #define endl '\n'
 #define mod 1000000007
-#define pyes cout<<"yes"<<"\n";
-#define pno cout<<"no"<<"\n";
+#define all(v) (v.begin(), v.end())
+#define pyes cout<<"YES"<<"\n";
+#define pno cout<<"NO"<<"\n";
 #define sortv sort(v.begin(),v.end())
 #define sortvg sort(v.begin(),v.end(),greater<>())
 #define ll long long
@@ -75,7 +76,8 @@ ll max_subarr(vector <ll>v){
     return max_sum;
 }
 
-bool go(int n){
+
+bool isB(int n){
     bool f=false,t=true;
     while(n>0){
         int s=n%10;
@@ -83,45 +85,42 @@ bool go(int n){
         return f;
     }return t;
 }
-void mine(){
-        int n;
-        cin >> n;
 
-        
-
+bool go(ll n){
+    if(isB(n)){
+        return true;
+    }
+    int n1=0;
+    for(int i=10; i*i<=n; i++){
+        if(n%i==0 and isB(i)){
+            n1=i;
+            break;
+        }
+    }
+    if(n1==0) return false;
+    int n2=n/n1;
+    bool f=go(n2);
+    if(f)return true;
+    else return false;
 }
-// void mine(){
-//         int n;
-//         cin >> n;
-//         string s; cin>>s;
 
+void mine(){
+    int n; cin>>n;
+    if(go(n)){
+        pyes
+    }else pno
 
-// }
-
-ll m=1e5;
+    
+}
  
 int main() {
-
     mezbah();
     int t;
     cin>>t;
-    vector<int>arr;
-    for(int i=1; i<=m; i++)if(go(i))arr.push_back(i);
-        
+    
     while(t--){
-        int n; cin>>n;
-        int mm=arr.size();
-        mm--;
-        while(mm>=0 and n>0){
-            if(arr[mm]!=1 and n%arr[mm]==0 ){
-            n=n/arr[mm];continue;
-            }mm--;
-
-        }if(n>1)pno
-        else pyes
-
+        mine();
     }
-
     return 0;
 }
 
