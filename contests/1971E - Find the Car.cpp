@@ -83,14 +83,10 @@ void mine(){
     ll n,k,q; cin>>n>>k>>q;
     vector<ll>a(k+1);
     vector<ll>b(k+1);
-    vector<long double>pres(k+1,0);
     for1(i,k)cin>>a[i];
     for1(i,k)cin>>b[i];
 
 
-    for1(i,k){
-        pres[i-1]=(ll)(a[i]-a[i-1])/(ll)(b[i]-b[i-1]);
-    }
     int x;
     forl(i,q){
         cin>>x;
