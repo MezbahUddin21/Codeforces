@@ -126,9 +126,9 @@ void mine(){
             int l=29;
             while(l>=0){
                 if(v[l]){
-                    int k=b/pow(2,l);
+                    int k=b/(1<<l);
                     int p=min(k,v[l]);
-                    b-=p*pow(2,l);
+                    b-=p*(1<<l);
                 }
                 l--;
             }
