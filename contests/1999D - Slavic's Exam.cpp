@@ -1,163 +1,60 @@
+/* GREEN UNIVERSITY OF BANGLADESH
+    Md DinIslam, Batch-221 (CSE)
+*/
 #include <bits/stdc++.h>
 using namespace std;
-#define endl '\n'
-#define space " "
-#define mod 1000000007
-#define pb push_back
-#define all(v) (v.begin(), v.end())
-#define allr(v) (v.begin(), v.end(),greater<>())
-#define pyes cout<<"YES"<<"\n";
-#define pno cout<<"NO"<<"\n";
-#define sortv sort(v.begin(),v.end())
-#define sortvg sort(v.begin(),v.end(),greater<>())
+
+// Debug..
+#ifdef LOCAL
+#include "debug.h"
+#else
+#define debug(x...)
+#endif
+
 #define ll long long
-#define forl(i,n) for(ll i=0;i<n;i++)
-#define for1(i,n) for(ll i=1;i<=n;i++)
-#define setprecision(x) cout << fixed << setprecision(x)
+#define all(x) x.begin(), x.end()
+#define pb push_back
+#define ff first
+#define ss second
 
-void printt(vector<int> v){
-    cout<<v.size()<<endl;
-    for(int i=1; i<=v.size(); i++){
-        cout<<v[i]<<" ";
-    }cout<<endl;
-}
-// set<int>primes;
-// void seive(int n){
-//     set<int>s;
-//     vector<int>v(n+3);
-//     for(int i=2; i*i<=n; i++){
-//         if(v[i]==0){
-//             for(int j=i*i; j<=n; j+=i){
-//                 v[j]=1;
-//             }
-//         }
-//     }
-//     for(int i=2; i<=n; i++){
-//         if(v[i]==0)s.insert(v[i]);
-//     }
-// }
+void Din() {
+    string s, t;
+    cin >> s >> t;
 
-vector<ll> mPrimeFact(ll x) {
-vector<ll> fact;
-for(ll i = 2; i * i <= x; i++) {
-ll cnt = 0;
-while(x % i == 0) {
-cnt++;
-x /= i;
-fact.push_back(i);
-}
-}
-    if(x > 1) fact.push_back(x);
-    return fact;
-}
-
-ll lcm(ll a,ll b){
-    ll g=__gcd(a,b);
-    return (a*b/g);
-}
-
-
-
-int cel(int a,float l){
-    return ceil(a/l);
-}
-ll max_subarr(vector <ll>v){
-    int n=v.size();
-    ll max_sum,curr_sum;
-    max_sum=curr_sum=0;
-    for(int i=0; i<n; i++){
-        curr_sum=max(curr_sum+v[i],v[i]);
-        max_sum=max(max_sum, curr_sum);
-    }  
-    return max_sum;
-}
-int mod_add(int a, int b, int m) {a = a % m; b = b % m; return (((a + b) % m) + m) % m;}
-int mod_mul(int a, int b, int m) {a = a % m; b = b % m; return (((a * b) % m) + m) % m;}
-int mod_sub(int a, int b, int m) {a = a % m; b = b % m; return (((a - b) % m) + m) % m;}
-
-vector<int> primes;
- 
-void sieve() {
-    vector<bool> isPrime(1e5 + 5, true);
-    isPrime[0] = isPrime[1] = false;
- 
-    for (int i = 2; i < 1e5 + 5; ++i) {
-        if (isPrime[i]) {
-            primes.push_back(i);
-            for (int j = i + i; j < 1e5 + 5; j += i) {
-                isPrime[j] = false;
+    int n = s.size(), m = t.size(), j = 0;
+    for (int i = 0; i < n; ++i) {
+        if (s[i] == '?') {
+            if (j < m && s[i] != t[j]) {
+                s[i] = t[j];
+                // j += 1;
             }
         }
-    }
-}
-
-ll cnt[33];
-
-void call(ll x){
-    forl(i,33){
-        ll p=1LL<<i;
-        ll c=x/p;
-        cnt[i]+=(c/2)*p;
-        if(c & 1LL){
-            cnt[i]+=x%p;
+        if (s[i] == t[j]) {
+            j += 1;
         }
-
+        // debug(t[i]);
     }
-}
-
-int bTd(vector<int> bi){
-    int dc=0;
-    for(auto i: bi){
-        dc=dc*2+i;
-    }
-    return dc;
-}
-
-bool pel(vector<int>z){
-    int l=0,r=z.size()-1;
-    while(l<r){
-        if(z[l]!=z[r]){
-            return false;
-        }else {
-            l++;
-            r--;
-        }
-    }
-    return true;
-}
-
-void mine(){
-    string s,t; cin>>s>>t;
-
-    int n=s.size();
-    int m=t.size();  
-    int j=0;  
-
-    for(int i=0; i<n  && j<m; i++){
-        if(s[i]==t[j] or s[i]=='?'){
-            s[i]=t[j];
-            j++;
-        }
+    for (auto &x : s) {
+        if (x == '?')
+            x = 'd';
     }
 
-    forl(i,n)
-        if(s[i]=='?')s[i]='x';
-
-    if(j==m){
-        pyes
-        cout<<s<<endl;
-    }else pno
+    // debug(s);
+    
+    if (j == m) {
+        cout << "Yes\n" << s << '\n';
+    }
+    else
+        cout << "No\n";
 
 }
-
-
- 
 int main() {
-    int t;
-    cin>>t;
-   
-    while(t--){
-        mine();
-    }
+    ios_base::sync_with_stdio(0); cin.tie(0);
+    int t = 1;
+    cin >> t;
+    while (t--) Din();
+    // for (int i = 1; i <= t; ++i) { // Kickstart
+    //     cout << "Case #" << i << ": "; Din();
+    // }
     return 0;
 }
