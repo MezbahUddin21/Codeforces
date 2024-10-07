@@ -108,13 +108,11 @@ void call(ll x){
 void mine(){
 
     int a,b,c,d; cin>>a>>b>>c>>d;
+
     int cnt=0;
-    if((a>c&&b>=d)||(b>d&&a>=c)){
-        cnt+=2;
-    }
-    if((b>c&&a>=d)||(b>=c&&a>d)){
-        cnt+=2;
-    }
+    if((a>c and b>=d ) or (b>d and a>=c) )cnt+=2;
+    if( (b>c and a>=d) or (a>d and b>=c))cnt+=2;
+
 
     cout<<cnt<<endl;
 
