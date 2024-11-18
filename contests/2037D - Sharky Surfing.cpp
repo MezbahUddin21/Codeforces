@@ -45,10 +45,10 @@ void mine(){
 
     multiset<int>s;
 
-    for(auto &[l,d,v] : a){
+    for(auto &[x,y,v] : a){
         for(int p:v)s.insert(p);
 
-        while(jump<d){
+        while(jump<y){
             if(s.empty()){
                 cout<<-1<<endl;
                 return;
@@ -80,4 +80,5 @@ signed main() {
     }
     return 0;
 }
+
 
