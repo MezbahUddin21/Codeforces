@@ -26,7 +26,7 @@ void mine(){
 
     if(n%2==1){
         ll ma=0x3f3f3f3f3f3f3f3f;
-        for(int i=1; i<=n; i++){
+        for(int i=1; i<=n; i+=2){
             ll tmp=1;
             for(int j=1; j<i; j+=2){
                 tmp=max(tmp,v[j+1]-v[j]);
