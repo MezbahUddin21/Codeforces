@@ -38,8 +38,7 @@ void mine(){
     for(int i=1; i<=n; i++){
         l=(sum+k)/i;
 
-        if(l<mx or l*i<sum)continue;
-        ans=i;
+        if(l>=mx and l*i>=sum)ans=i;
     }
 
     cout<<ans<<endl;
