@@ -23,7 +23,8 @@ ll v[mx];
 bool cal(ll val){
     ll sum=0;
     for(int i=n/2+1; i<=n; i++){
-        sum+=max(0LL,(val-v[i]));
+        if(val-v[i]<0)break;
+        sum+=val-v[i];
     }
 
     return (sum<=k);
