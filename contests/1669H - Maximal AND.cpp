@@ -25,12 +25,6 @@ void mine(){
 
     forl(i,n)cin>>v[i];
 
-    int anD=v[0];
-
-    for1(i,n-1){
-        anD=anD&v[i];
-    }
-
     int bo[31];
     mem(bo,0);
 
