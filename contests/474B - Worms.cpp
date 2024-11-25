@@ -25,7 +25,8 @@ void mine(){
     mem(a,0);
 
     a[1]=1;
-
+    int sum=0;
+    
     int n; cin>>n;
     int prev=0;
 
@@ -33,10 +34,11 @@ void mine(){
         int x; cin>>x;
         prev+=x;
         a[prev+1]=1;
+        sum+=x;
 
     }
 
-    for(int i=1; i<=mx; i++){
+    for(int i=1; i<=sum; i++){
         a[i]+=a[i-1];
     }
 
