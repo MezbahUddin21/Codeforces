@@ -21,27 +21,30 @@ using namespace std;
 void mine(){
     int n; cin>>n;
 
-    string S; cin>>S;
+    string s; cin>>s;
 
-    vector<string> strings = {""};
- 
-    while (1) {
-        vector<string> nstrings;
- 
-        for (auto &str : strings)
-            for (int c = 0; c < 26; c++) {
-                string nstr = str + char('a' + c);
-                nstrings.push_back(nstr);
- 
-                if (S.find(nstr) == string::npos){
-                    cout<<nstr<<endl;
+    vector<string>sa={""};
+
+    while(1){
+        vector<string>cs;
+
+        for(auto &st:sa){
+            for(int i=0; i<26; i++){
+                string nst=st+char('a'+i);
+
+                cs.pb(nst);
+
+                if(s.find(nst)==string::npos){
+                    cout<<nst<<endl;
                     return;
                 }
-                    
             }
- 
-        strings.swap(nstrings);
+        }
+        sa.swap(cs);
+
     }
+
+
 
 }
 
