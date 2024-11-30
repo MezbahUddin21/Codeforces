@@ -19,29 +19,21 @@ using namespace std;
 
 
 void mine(){
-    ll n,x; cin>>n>>x;
+    int n,x; cin>>n>>x;
 
-    vector<ll>v(n);
+    vector<int>v(n);
 
     forl(i,n)cin>>v[i];
 
     sort all(v);
 
-    for(ll i=1; i<n; i++){
-        v[i]+=v[i-1];
-    }
+    ll sum=0,ans=0;
 
-    auto it=upper_bound(v.begin(),v.end(),x);
+    for(int i=0; i<n; i++){
+        sum+=v[i];
 
-    ll ind=it-v.begin();
-    ll f=0;
-
-
-    ll ans=0;
-
-    for(ll i=ind-1; i>=0;i--){
-        if(v[i]<=x){
-            ans+=(x-v[i])/(i+1)+1;   
+        if(sum<=x){
+            ans+=(x-sum)/(i+1)+1;
         }
     }
 
