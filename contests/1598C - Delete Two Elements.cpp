@@ -24,12 +24,12 @@ void mine(){
     vector<int>v(n);
     map<int,int>mp;
 
+    ll sum=0;
     forl(i,n){
         cin>>v[i];
+        sum+=v[i];
         mp[v[i]]++;
     }
-    ll sum=accumulate(v.begin(),v.end(),0LL);
-    
 
     if((2*sum)%n!=0){
         cout<<0<<endl;
