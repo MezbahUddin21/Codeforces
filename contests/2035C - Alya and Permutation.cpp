@@ -22,32 +22,30 @@ void mine(){
     
     int n; cin>>n;
 
-    if(n%2){
-        cout<<n<<endl;
-        for(int i=2; i<n-1; i++){
-            if(i==3)continue;
-
-            cout<<i<<space;
-        }
-        cout<<"1 3 "<<n-1<<space<<n<<endl;
-        return;
-    }else if(n==6){
-        cout<<7<<endl;
-        cout<<"1 2 4 6 5 3"<<endl;
-        return;
-    }
-    else{
-        int hs=1<<__lg(n);
-
-        cout<<hs*2-1<<endl;
-        for(int i=2; i<=n; i++){
-            if(i==3 or i==hs-2 or i==hs-1 or i==hs)continue;
-
-            cout<<i<<space;
-        }
-        cout<<"1 3 "<<hs-2<<space<<hs-1<<space<<hs<<endl;
-        return;
-    }
+if (n%2)
+		{
+			cout<<n<<endl;
+			for (int i=2;i<n-2;++i) cout<<i<<' ';
+			cout<<1<<' '<<n-2<<' '<<n-1<<' '<<n<<endl;
+		}
+		else if (n==6)
+		{
+			cout<<7<<endl<<"1 2 4 6 5 3"<<endl;
+		}
+		else
+		{
+			int u=1<<__lg(n);
+			set<int> s;
+			for (int i=1;i<=n;++i) s.insert(i);
+			s.erase(1);
+			s.erase(3);
+			s.erase(u);
+			s.erase(u-1);
+			s.erase(u-2);
+			cout<<u*2-1<<endl;
+			for (auto x: s) cout<<x<<' ';
+			cout<<"1 3 "<<u-2<<' '<<u-1<<' '<<u<<endl;
+		}
 
 }
 
