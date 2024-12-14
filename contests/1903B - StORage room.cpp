@@ -23,8 +23,8 @@ void mine(){
 
     int n; cin>>n;
 
-    int v[n][n];
-    int ans[n];
+    vector<vector<int>>v(n,vector<int>(n));
+    vector<int>ans(n);
 
     forl(i,n){
         ans[i] = (1<<30) - 1;
