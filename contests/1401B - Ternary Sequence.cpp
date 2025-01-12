@@ -28,7 +28,7 @@ void mine(){
 
     yb-=min(xc,yb);
 
-    ans-=2*max(0,yc+xb-(xa+xb+xc));
+    ans-=2*max(0,(yc-xc)-xa);
 
     cout<<ans<<endl;
 
