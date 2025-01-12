@@ -26,14 +26,14 @@ void mine(){
     forl(i,n)cin>>v[i];
 
     for(int i=0; i<(1<<n); i++){
-        int x=i, sum=0;
+
+        int sum=0;
 
         for(int j=0; j<n; j++){
-            int d=x%2;
-            if(d)sum+=v[j];
-            else sum-=v[j];
-
-            x/=2;
+            
+            if(i&(1<<j)){
+                sum+=v[j];
+            }else sum-=v[j];
         }
 
         if(sum%360==0){
