@@ -30,8 +30,7 @@ void mine() {
     forl(i,n){
         int x; cin>>x;
         
-        for(int j=30; j>=0; j--){
-            if((1<<j)<x)break;
+        for(int j=1; j<32; j++){
             ans+=mp[(1<<j)-x];
         }
 
