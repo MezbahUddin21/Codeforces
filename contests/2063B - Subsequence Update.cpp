@@ -36,7 +36,7 @@ void mine() {
     forl(i,r) v1.push_back(v[i]);
     for (int i=l-1;i<n;i++) v2.push_back(v[i]);
 
-    printf("%lld\n",min(ans(v1),ans(v2)));
+    cout<<min(ans(v1),ans(v2))<<endl;
 
 }
  
