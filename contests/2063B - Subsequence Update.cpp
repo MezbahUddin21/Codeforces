@@ -14,24 +14,29 @@ using namespace std;
 #define forl(i,n) for(int i=0;i<n;i++)
 #define for1(i,n) for(int i=1;i<=n;i++)
 #define setprecision(x) cout << fixed << setprecision(x)
- 
 
-const int maxn=(1e5)+10;
-int T,n,l,r,a[maxn];
-ll calc(vector<int> &vec) {
+int n,l,r; 
+
+ll ans(vector<int> &vec) {
     sort(vec.begin(),vec.end());
-    ll ans=0;
-    for (int i=0;i<r-l+1;i++) ans+=vec[i];
-    return ans;
+    ll sum=0;
+    for (int i=0;i<r-l+1;i++) sum+=vec[i];
+    return sum;
 }
 void mine() {
 
-    scanf("%d %d %d",&n,&l,&r);
-    for (int i=1;i<=n;i++) scanf("%d",&a[i]);
+    cin>>n>>l>>r;
+
+    vector<int>v(n);
+
+    forl(i,n) scanf("%d",&v[i]);
+
     vector<int> v1,v2;
-    for (int i=1;i<=r;i++) v1.push_back(a[i]);
-    for (int i=l;i<=n;i++) v2.push_back(a[i]);
-    printf("%lld\n",min(calc(v1),calc(v2)));
+
+    forl(i,r) v1.push_back(v[i]);
+    for (int i=l-1;i<n;i++) v2.push_back(v[i]);
+
+    printf("%lld\n",min(ans(v1),ans(v2)));
 
 }
  
