@@ -22,36 +22,24 @@ void mine(){
 
     int n=s.size();
 
-    vector<vector<int>>cnt(n,vector<int>(3));
+    int a=-1,b=-1,c=-1;
 
-    int a=-1,b=-1;
-    int c=-1;
+    int ans= INT_MAX;
+    bool f=0;
 
     forl(i,n){
         if(s[i]=='1')a=i;
         else if(s[i]=='2')b=i;
         else if(s[i]=='3')c=i;
+    
+         if(a!=-1 and b!=-1 and c!=-1){
+             f=1;
+            ans=min(ans,1+ max(abs(a-b),max(abs(a-c),abs(b-c))));
 
-        cnt[i][0]=a;
-        cnt[i][1]=b;
-        cnt[i][2]=c;
-    }
-
-    int ans=INT_MAX;
-
-
-    bool f=0;
-
-    forl(i,n){
-        if(cnt[i][0]!=-1 and cnt[i][1]!=-1 and cnt[i][2]!=-1){
-
-            f=1;
-
-            int dif=max(abs(cnt[i][0]-cnt[i][1])+1,max(abs(cnt[i][0]-cnt[i][2])+1,abs(cnt[i][1]-cnt[i][2])+1));
-
-            ans=min(ans,dif);
         }
+
     }
+
 
     if(!f)cout<<0<<endl;
 
