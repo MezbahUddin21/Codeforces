@@ -18,23 +18,31 @@ using namespace std;
 
 
 void mine(){
-    int n;
-    cin>>n;
-    vector<int>a(n);
+    ll n; cin>>n;
 
-    ll tg=0;
-    for(int i=0;i<n;i++){
-        cin>>a[i];
-        if(a[i]<0)
-        tg-=a[i];
+    vector<ll>v(n+2,0);
+    vector<ll>pre(n+2,0);
+    vector<ll>suf(n+2,0);
+
+    for1(i,n)cin>>v[i];
+
+    for1(i,n){
+        // if(v[i]<0)continue;
+        pre[i]=pre[i-1]+max(0LL,v[i]);
     }
 
-    
-    ll ans=tg;
-    for(int i=0;i<n;i++){
-        tg+=a[i];
-        ans=max(ans,tg);
+    for(ll i=n; i>0; i--){
+
+        // if(v[i]>0)continue;
+        suf[i]=suf[i+1]+max(0LL,-v[i]);
     }
+
+    ll ans=0;
+
+    for(ll i=1; i<=n; i++){
+        ans=max(ans,suf[i]+pre[i]);
+    }
+
     cout<<ans<<endl;
 
 }
