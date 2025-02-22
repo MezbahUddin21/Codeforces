@@ -15,48 +15,31 @@ using namespace std;
 #define for1(i,n) for(int i=1;i<=n;i++)
 #define setprecision(x) cout << fixed << setprecision(x)
 
-int a=-1,b=-1,c=-1;
-ll l=-1;
-
-bool isPrime(ll n){
-
-    for(ll i=2; i*i<=n; i++){
-        if(n%i==0 and i!=a and i!=n/i){
-            l=i;
-            return false;
-        }
-    }
-
-    return true;
-}
 
 
 void mine(){
     ll n; cin>>n;
 
-    a=-1,b=-1,c=-1;
+    set<int>st;
 
+    for(ll i=2; i*i<=n; i++){
+        if(n%i==0){
+            st.insert(i);
+            n/=i;
+        }
 
-    if(n<24 or isPrime(n)){
-        pno
-        return;
+        if(st.size()>1)break;
     }
 
-    int r=n/l;
+    st.insert(n);
 
-    a=l;
+    if(st.size()<3)pno
+    else {
+        pyes
 
-    if(isPrime(r)){
-        pno
-        return;
+        for(auto it:st)cout<<it<<space;
+        cout<<endl;
     }
-
-    b=l;
-    c=r/l;
-
-    pyes;
-
-    cout<<a<<space<<b<<space<<c<<endl;
 
 
 }
