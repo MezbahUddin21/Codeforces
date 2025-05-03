@@ -49,16 +49,17 @@ void mine() {
     int cnt=0;
     int i=0;
 
-    while(i<n){
+    forl(i,n){
 
         ll w = sv[i].first;
 
         vector<int>cv;
 
         int j=i;
-        while(j<n and sv[j].first==w){
-            cv.pb(sv[j].second);
-            j++;
+        for(; j<n; j++){
+            if(sv[j].first==w){
+                cv.pb(sv[j].second);
+            }else break;
         }
 
 
@@ -69,9 +70,7 @@ void mine() {
         // for(auto it:cv)cout<<it<<space;
         // cout<<endl;
 
-        int k=0;
-
-        while(k<sz){
+        for(int k=0; k<sz; k++){
             int l=cv[k]; 
             int r=l;
 
@@ -83,12 +82,11 @@ void mine() {
             // cout<<"lr: "<<l<<space<<r<<endl;
 
             if(!see[l-1] and !see[r+1])cnt++;
-            k++;
         }
 
         for(auto i:cv)see[i]=true;
 
-        i=j;
+        i=j-1;
 
 
 
