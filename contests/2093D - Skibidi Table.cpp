@@ -20,7 +20,9 @@
 
 
     ll getNum(ll n, ll x , ll y){
+        
         if(n==1){
+
             if(x==1 and y==1)return 1;
             else if(x==1 and y==2)return 4;
             else if(x==2 and y==1)return 3;
@@ -43,6 +45,7 @@
 
             return (2*block)+getNum(n-1, x-half,y);
         }else{
+
             return (3*block)+getNum(n-1, x,y-half);
         }
     }
@@ -50,10 +53,12 @@
     pair<ll,ll> getCord(ll n, ll x){
         
         if(n==1){
+
             if(x==1)return {1,1};
             else if(x==2)return {2,2};
             else if(x==3)return {2,1};
             else return {1,2};
+
         }
 
         ll size = 1LL<<(n-1);
@@ -61,17 +66,23 @@
         ll block=half*half;
 
         if(x<=block){
+
             auto [a,b] = getCord(n-1, x);
             return {a,b};
+
         }else if(x<=2*block){
+
             auto [a,b] = getCord(n-1, x-block);
             return {a+size,b+size};
+
         }else if(x<=3*block){
+
             auto [a,b]=getCord(n-1, x-2*block);
             return {a+size,b};
-        }else {
-            auto [a,b]=getCord(n-1, x-3*block);
 
+        }else {
+
+            auto [a,b]=getCord(n-1, x-3*block);
             return {a,b+size};
         }
         
