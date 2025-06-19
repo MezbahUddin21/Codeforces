@@ -25,41 +25,27 @@ void mine(){
     int n; cin>>n;
     string s; cin>>s;
 
-    
-    map<char,int>mp;
-    
-    for(int i=1; i<n-1; i++){
+    map<int,int>mp;
+
+    for1(i,n-2){
         mp[s[i]]++;
-        
-        if(s[i]==s[i+1] or mp[s[i]]>=2 or s[i]==s[i-1]){
+        if(mp[s[i]]>=2){
             pyes
             return;
         }
-        
+
     }
-    
-    if(s[0]==s[n-1] ){
-        
-        mp[s[0]]++;
-        mp[s[n-1]]++;
-        
-        if(mp[s[0]]>=3){
-            pyes
-            return;
-            
-        }
-    }else{
-        mp[s[0]]++;
-        mp[s[n-1]]++;
-        if(mp[s[0]]>=2 or mp[s[n-1]]>=2){
-            pyes
-            return;
-        }
+
+    if(mp[s[0]]>=1 or mp[s[n-1]]>=1){
+        pyes
+        return;
     }
-    
-    
- 
+
     pno
+
+    
+
+ 
 }
  
 int main() {
