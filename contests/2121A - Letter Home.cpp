@@ -21,35 +21,32 @@ using namespace std;
  
  
 void mine(){
-    int n,m; cin>>n>>m;
+    int n, s; cin>>n>>s;
 
-    vector<int>v(n+1);
+    vector<int>v(n);
 
-    int mn= INT_MAX, mx=0;
+    forl(i,n)cin>>v[i];
 
-    for1(i,n){
-        int x; cin>>x;
-        mn=min(mn,x);
-        mx=max(mx,x);
+    sort all(v);
+
+    int a=v[0];
+    int b=v[n-1];
+
+
+    int mx=max(abs(a-s), abs(b-s));
+
+    int mn=min(abs(a-s), abs(b-s));
+
+    if(a==b){
+        cout<<abs(a-s)<<endl;
+    }else if(a>=s){
+        cout<<b-s<<endl;
+    }else if(b<=s){
+        cout<<s-a<<endl;
     }
-    if(mx==mn){
-        cout<<abs(m-mn)<<endl;
-        return;
-    }else if(mx<=m){
-        cout<<m-mn<<endl;
-        return;
-    }else if(mn>=m){
-        cout<<mx-m<<endl;
-        return;
+    else {
+        cout<<2*mn+mx<<endl;
     }
-
-    int ans=2*min(abs(mx-m),abs(mn-m))+ max(abs(mx-m),abs(mn-m));
-
-
-    cout<<ans<<endl;
-
-
-
  
 }
  
