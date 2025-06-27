@@ -23,15 +23,16 @@ void mine(){
     int n; cin>>n;
 
     for1(i,n){
-        if(i&1) cout<<i<<space;
+        if(i%2)cout<<i<<space;
     }
 
     for(int i=n; i>=1; i--){
-        if((!(i&1)))cout<<i<<space;
+        if(i%2==0)cout<<i<<space;
     }
-    
+
     cout<<endl;
 
+  
 }
  
 int main() {
