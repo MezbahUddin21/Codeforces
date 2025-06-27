@@ -19,36 +19,25 @@ using namespace std;
  
  
 void mine(){
-   int n,x; cin>>n>>x;
+
+    int n,x; cin>>n>>x;
 
     vector<int>v(n);
 
     forl(i,n)cin>>v[i];
 
-    int l=-1,r=-1;
+    int first=-1,last=-1;
 
     forl(i,n){
-        if(v[i]==1){
-            l=i;
-            break;
-        }
+        if(v[i]==1 and first==-1)first=i;
+        else if(v[i]==1)last=i;
     }
 
-    for(int i=n-1; i>=0; i--){
-        if(v[i]==1){
-            r=i;
-            break;
-        }
-    }
-
-    if(l==-1){
-        pyes
-        return;
-    }
-
-    if(x>=(r-l+1))pyes
+    if(x>=(last-first)+1)pyes
     else pno
 
+
+  
 }
  
 int main() {
