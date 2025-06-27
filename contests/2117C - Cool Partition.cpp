@@ -20,29 +20,30 @@ using namespace std;
  
 void mine(){
 
-    ll n;
-    cin >> n;
-    vector<int>a(n);
+    int n; cin>>n;
 
-    for(int i=0; i<n; ++i)cin>>a[i];
-    
-    set<ll> have, make;
-    have.insert(a[0]);
+    vector<int>v(n);
 
-    int ans = 0;
-    ans=1;
-    for(int i=1; i<n; ++i){
-        make.insert(a[i]);
-        have.erase(a[i]);
-        if(have.empty()){
-            ++ans;
-            have=make;
-            make.clear();
+    forl(i,n)cin>>v[i];
+
+
+    set<int>isit,makeit;
+
+    isit.insert(v[0]);
+
+    int ans=1;
+
+    for1(i,n-1){
+        makeit.insert(v[i]);
+        isit.erase(v[i]);
+        if(isit.empty()){
+            ans++;
+            isit=makeit;
+            makeit.clear();
         }
     }
-    cout<<ans<<'\n';
 
-
+    cout<<ans<<endl;
 
   
 }
