@@ -29,7 +29,7 @@ void mine(){
     }
 
 
-    vector<int>cnt(n+3,0);
+    vector<int>cnt(n+4,0);
     int mex=0;
     for(auto it:mp){
         if(it.first==mex){
@@ -39,22 +39,20 @@ void mine(){
         }
     }
 
-    vector<int>a(n+1,0);
 
-    a[n]=1;
+    // cout<<"mex "<<mex<<endl;
 
-    for(int i=n-1; i>n-mex; i--){
-        a[i]=a[i+1]+1;
+
+    int cntk=1;
+
+    for1(i,n-mex+1){
+        cout<<cntk<<space;
+        cntk+=cnt[i];
     }
 
-    a[0]=1;
+    mex++;
+    while(--mex)cout<<mex<<space;
 
-    for1(i,n-mex){
-        if(a[i])break;
-        a[i]=a[i-1]+cnt[i];
-    }
-
-    for(auto i:a)cout<<i<<space;
     cout<<endl;
 
 }
