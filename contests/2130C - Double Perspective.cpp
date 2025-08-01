@@ -60,8 +60,6 @@ void mine(){
         int a,b; cin>>a>>b;
 
         mx=max(mx,max(a,b));
-        
-        v[i][0]=b-a;
         v[i][1]=a;
         v[i][2]=b;
         v[i][3]=i+1;
@@ -70,7 +68,7 @@ void mine(){
     DSU dsu(mx);
 
     // sort allr(v);
-    sort(v.begin(),v.end(),comp);
+    // sort(v.begin(),v.end(),comp);
 
 
 
