@@ -51,21 +51,17 @@ void mine(){
     
     int n; cin>>n;
 
-    vector<vector<int>>v(n,vector<int>(4));
-
-    int mx=0;
+    vector<vector<int>>v(n,vector<int>(3));
 
     forl(i,n){
 
         int a,b; cin>>a>>b;
-
-        mx=max(mx,max(a,b));
-        v[i][1]=a;
-        v[i][2]=b;
-        v[i][3]=i+1;
+        v[i][0]=a;
+        v[i][1]=b;
+        v[i][2]=i+1;
     }
 
-    DSU dsu(mx);
+    DSU dsu(2*n+3);
 
     // sort allr(v);
     // sort(v.begin(),v.end(),comp);
@@ -79,7 +75,7 @@ void mine(){
 
     forl(i,n){
 
-        if(dsu.add(v[i][1],v[i][2]))ans.pb(v[i][3]);
+        if(dsu.add(v[i][0],v[i][1]))ans.pb(v[i][2]);
 
     }
 
