@@ -22,28 +22,32 @@ void mine(){
     
     ll l,r; cin>>l>>r;
 
-    ll ans=(r/2)-(l-1)/2+(r/3)-(l-1)/3+(r/5)-(l-1)/5+(r/7)-(l-1)/7;
+    vector<int>pr={2,3,5,7};
+    ll ans=0;
 
+    for(int i=0; i<16; i++){
+        ll p=1;
 
-    vector<int>prime={2,3,5,7};
+        int cnt=0;
 
-    vector<int>pMul={6,10,14,15,21,35,210};
+        for(int j=0; j<4; j++){
+            if(i>>j&1){
+                p*=pr[j];   
+                cnt++;
 
-    forl(i,pMul.size()){
+            }
+        }
+    
+        if(cnt%2){
+            ans-=r/p-(l-1)/p;
+        }else ans+=r/p-(l-1)/p;
+
         
-            ans-=((r/pMul[i])-((l-1)/pMul[i]));
-        
+
     }
 
-    vector<int>c={30,42,70,105};
-    forl(i,c.size()){
-        
-            ans+=((r/c[i])-((l-1)/c[i]));
-        
-    }
-    // cout<<endl;
+    cout<<ans<<endl;
 
-    cout<<r-l+1-ans<<endl;
 
 }
  
