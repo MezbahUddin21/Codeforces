@@ -23,7 +23,7 @@ using namespace std;
 */
 
 
-const int mx = 2*1e4+5;
+const int mx = 2*1e3+5;
 vector<bool>isPrime(mx);
 vector<int> primes;
 void sieve(int n){
