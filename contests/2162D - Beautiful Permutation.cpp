@@ -57,7 +57,7 @@ void mine(){
    }
 
 
-   cout<<'!'<<space<<l<<space<<l+len-1<<endl;
+   cout<<'!'<<space<<r<<space<<r+len-1<<endl;
 
 
 }
