@@ -22,42 +22,50 @@ using namespace std;
 
 */
 
-
-
-
 void mine(){
 
-   int n; cin>>n;
+    int n; cin>>n;
 
-   cout<<1<<space<<1<<space<<n<<endl;
+    int x,y;
 
-   int x; cin>>x;
+    cout<<1<<space<<1<<space<<n<<endl;
+    cout.flush();
+    cin>>x;
 
-   cout<<2<<space<<1<<space<<n<<endl;
+    cout<<2<<space<<1<<space<<n<<endl;
+    cout.flush();
+    cin>>y;
 
-   int y; cin>>y;
-
-   int len=y-x;
-
-   int l=1,r=n;
-
-   while(l<r){
-
-    ll mid=(r+l)/2;
-
-    cout<<1<<space<<l<<space<<mid<<endl;
-    int a; cin>>a;
-
-    cout<<2<<space<<l<<space<<mid<<endl;
-    int b; cin>>b;
-
-    if(b-a==0)l=mid+1;
-    else r=mid;
-
-   }
+    int cnt=y-x;
 
 
-   cout<<'!'<<space<<r<<space<<r+len-1<<endl;
+    int left=1,right=n;
+
+    int l=1,r=n;
+
+    while(l<=r){
+        
+        int mid=(l+r)/2;
+
+        cout<<1<<space<<mid<<space<<right<<endl;
+        cout.flush();
+
+        cin>>x;
+        cout<<2<<space<<mid<<space<<right<<endl;
+        cout.flush();
+
+        cin>>y;
+
+        if(cnt==(y-x)){
+            left=mid;
+            l=mid+1;
+        }else{
+            r=mid-1;
+        }
+
+    }
+
+    cout<<'!'<<space<<left<<space<<left+cnt-1<<endl;
 
 
 }
