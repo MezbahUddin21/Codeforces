@@ -22,32 +22,6 @@ using namespace std;
 
 */
 
-
-const int mx = 1e5+1;
-vector<bool>isPrime(mx);
-vector<int> primes;
-
-
-void sieve(int n){
-    for(int i=3; i<=n; i+=2)isPrime[i]=1;
-    int sq=sqrt(n);
-    for (int i=3; i<=sq; i+=2){
-        if(isPrime[i]){
-            for (int j =i*i; j<=n; j+=i){
-                isPrime[j]=0;
-            }
-        }
-    }
-    primes.push_back(2);
-    for (int i=3; i<=n; i+=2 ) {
-        if(isPrime[i]==1) {
-            primes.push_back(i);
-        }
-    }
-}
-
-vector<ll>check(20+1,0);
-
 void mine(){
 
     
@@ -56,24 +30,18 @@ void mine(){
     vector<ll>v(n);
 
     forl(i,n)cin>>v[i];
-    ll gc=v[0];
-    forl(i,n){
 
-        gc=__gcd(gc,v[i]);
-    }
+    sort all(v);
 
-    // cout<<"g"<<gc<<endl;
-
-
-    forl(i,1000){
-        if(gc%primes[i]){
-            cout<<primes[i]<<endl;
-            return;
+    for(ll i=2; ; i++){
+        forl(j,n){
+            if(__gcd(v[j],i)==1){
+                cout<<i<<endl;
+                return;
+            }
         }
     }
 
-
-    cout<<-1<<endl;
 
 
 
@@ -94,7 +62,6 @@ int main() {
     // }
     // cout<<endl;
 
-    sieve(mx);
     ll t = 1;
     cin>>t;
     // ll c=1;
