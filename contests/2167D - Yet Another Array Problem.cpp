@@ -33,7 +33,7 @@ void mine(){
 
     sort all(v);
 
-    for(ll i=2;i<2000; i++){
+    for(ll i=2;i<200; i++){
         forl(j,n){
             if(__gcd(v[j],i)==1){
                 cout<<i<<endl;
