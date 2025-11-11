@@ -18,10 +18,9 @@ using namespace std;
 #define fast ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 
 /*
- with help of gpt
+
 
 */
-
 ll k;
 
 class MoAlgorithm {
@@ -30,7 +29,6 @@ public:
     ll n, q, curAns;
     vector<ll> a, ans;
     vector<ll> freq;
-
     struct Query {
         ll l, r, idx;
         bool operator<(const Query &other) const {
@@ -43,13 +41,13 @@ public:
     vector<Query> queries;
 
     void add(ll pos) {
-        curAns += freq[a[pos] ^ k];
+        curAns+=freq[a[pos]^k];
         freq[a[pos]]++;
     }
     
     void remove(ll pos) {
         freq[a[pos]]--;
-        curAns -= freq[a[pos] ^ k];
+        curAns -= freq[k^a[pos]];
     }
 
     MoAlgorithm(const vector<ll> &input, ll query_count) {
@@ -57,7 +55,8 @@ public:
         n = a.size();
         q = query_count;
         sqrtN = sqrt(n) + 1;
-        freq.assign(1 << 21, 0);
+        freq.assign(10000000, 0);
+        
         ans.assign(q, 0);
     }
 
@@ -80,26 +79,42 @@ public:
 
         return ans;
     }
-};
-ll MoAlgorithm::sqrtN;
+};ll MoAlgorithm::sqrtN;
 
-void mine() {
-    ll n, q; cin >> n >> q >> k;
-    vector<ll> v(n);
-    forl(i,n) cin >> v[i];
+void mine(){
 
-    vector<ll> pre(n+1, 0);
-    for1(i,n) pre[i] = pre[i-1] ^ v[i-1];
+    ll n; cin>>n;
+    ll q; cin>>q;
+    cin>>k;
 
-    MoAlgorithm mo(pre, q);
-    forl(i,q) {
-        ll l, r; cin >> l >> r;
-        l--; r--; // 0-indexed
-        mo.addQuery(l, r + 1, i); // IMPORTANT
+    vector<ll>v(n);
+
+    forl(i,n)cin>>v[i];
+
+    vector<ll>pre(n+1,0);
+
+    for1(i,n)pre[i]=pre[i-1]^v[i-1];
+
+
+
+
+    MoAlgorithm mo(pre,q);
+
+    forl(i,q){
+
+        ll l,r; cin>>l>>r;
+        l--,r;
+        mo.addQuery(l,r,i);
+
     }
 
-    vector<ll> ans = mo.process();
-    forl(i,q) cout << ans[i] << endl;
+    vector<ll>ans=mo.process();
+
+    forl(i,q)cout<<ans[i]<<endl;
+
+
+
+
 }
 
 int main() {
