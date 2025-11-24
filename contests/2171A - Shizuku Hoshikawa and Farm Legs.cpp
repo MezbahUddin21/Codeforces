@@ -25,23 +25,15 @@ using namespace std;
 void mine(){
 
     int n; cin>>n;
-    int ans=0;
 
-    if(n%2==1){
+    if(n%2){
         cout<<0<<endl;
-        return;
     }
-
-    if(n>=4){
-        ans=n/4+1;
-        cout<<ans<<endl;
+    else if(n>=4){
+        cout<<n/4+1<<endl;
     }else{
         cout<<1<<endl;
     }
-
-
-
-
 
 
 }
