@@ -2,9 +2,10 @@
 using namespace std;
 #define endl '\n'
 #define space " "
-#define lowerr(a,x) lower_bound(a.begin(),a.end(),x)-a.begin();
 #define mod 1000000007
+#define pb push_back
 #define all(v) (v.begin(), v.end())
+#define allr(v) (v.begin(), v.end(),greater<>())
 #define pyes cout<<"YES"<<"\n";
 #define pno cout<<"NO"<<"\n";
 #define sortv sort(v.begin(),v.end())
@@ -13,107 +14,58 @@ using namespace std;
 #define forl(i,n) for(int i=0;i<n;i++)
 #define for1(i,n) for(int i=1;i<=n;i++)
 #define setprecision(x) cout << fixed << setprecision(x)
-void mezbah(){
-    ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif
-}
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define fast ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 
-void printt(vector<int> v){
-    cout<<v.size()<<endl;
-    for(int i=1; i<=v.size(); i++){
-        cout<<v[i]<<" ";
-    }cout<<endl;
-}
-
-void seive(int n){
-    vector<int>v(n+3);
-    for(int i=2; i*i<=n; i++){
-        if(v[i]==0){
-            for(int j=i*i; j<=n; j+=i){
-                v[j]=1;
-            }
-        }
-    }
-    for(int i=2; i<=n; i++){
-        if(v[i]==0)cout<<i<<" ";
-    }
-    cout<<endl;
-}
-
-vector<ll> mPrimeFact(ll x) {
-	vector<ll> fact;
-	for(ll i = 2; i * i <= x; i++) {
-		ll cnt = 0; 
-		while(x % i == 0) {
-			cnt++;
-			x /= i;
-			fact.push_back(i);
-		}
-	}
-    if(x > 1) fact.push_back(x);
-    return fact;
-}
-
-ll lcm(ll a,ll b){
-    ll g=__gcd(a,b);
-    return (a*b/g);
-}
+/*
 
 
+*/
 
-int cel(int a,float l){
-    return ceil(a/l);
-}
-ll max_subarr(vector <ll>v){
-    int n=v.size();
-    ll max_sum,curr_sum;
-    max_sum=curr_sum=0;
-    for(int i=0; i<n; i++){
-        curr_sum=max(curr_sum+v[i],v[i]);
-        max_sum=max(max_sum, curr_sum);
-    }   
-    return max_sum;
-}
+void mine(){
 
-
-int mine(){
     int n; cin>>n;
+
     vector<int>a(n);
     vector<int>b(n);
+
     forl(i,n)cin>>a[i];
+
     forl(i,n)cin>>b[i];
-    int cnt=0;
+
+
     int i=0,j=0;
-    while(i<n and j<n){
+
+    int cnt=0;
+
+    while(j<=n-1){
+
         if(a[i]>b[j]){
-            j++;
             cnt++;
-        }else {
-            i++; j++;
+            j++;
+        }else{
+            i++;
+            j++;
         }
+
+
     }
+
+
     cout<<cnt<<endl;
 
 
 
-
-    return 0;
 }
 
- 
 int main() {
-    mezbah();
-    int t;
+    fast;
+    ll t = 1;
     cin>>t;
-    
-    while(t--){
+    // ll c=1;
+    while (t--) {
+        // cout<<"Case "<<c<<": "; c++;
         mine();
     }
     return 0;
 }
-
-
- 
