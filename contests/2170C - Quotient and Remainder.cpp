@@ -28,7 +28,7 @@ bool check(vector<ll>&q, vector<ll>&r, ll m, ll k){
 
     forl(i,m){
         
-        if((q[i]+1)*(r[m-i-1]+1)-1 > k)return 0;
+        if((q[(n-m)+i]+1)*(r[i]+1)-1 > k)return 0;
     }
 
     return 1;
@@ -46,7 +46,7 @@ void mine(){
     forl(i,n)cin>>q[i];
     forl(i,n)cin>>r[i];
 
-    sort all(q);
+    sort allr(q);
     sort all(r);
 
 
