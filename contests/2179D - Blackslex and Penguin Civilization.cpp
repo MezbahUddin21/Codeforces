@@ -27,37 +27,31 @@ void mine(){
 
     int sz=pow(2,n);
 
-    vector<int>v(sz);
+    vector<pair<int,int>>v(sz);
 
     forl(i,sz){
-        v[i]=i;
+        v[i].second=i;
     }
-
-    vector<int>p(sz);
 
     forl(i,sz){
         int bit=i;
-
+        int cnt=0;
         while(bit){
-            if(bit&1)p[i]++;
+            if(bit&1)cnt++;
             else break;
             bit>>=1;
         }
+        v[i].first=cnt;
+
     }
 
-    // forl(i,sz)cout<<p[i]<<space;
-
-    // cout<<endl;
-
-    stable_sort(all(v), [&](int l, int r){
-        return p[l]>p[r];
+    sort(all(v), [&](pair<int,int>&a, pair<int,int>&b){
+        if(a.first==b.first)return (a.second<b.second);
+        else return a.first>b.first;
     });
 
-    // forl(i,sz)cout<<p[i]<<space;
 
-    // cout<<endl;
-
-    forl(i,sz)cout<<v[i]<<space;
+    forl(i,sz)cout<<v[i].second<<space;
     cout<<endl;
 
 }
