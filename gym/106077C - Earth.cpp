@@ -43,10 +43,11 @@ void solve(){
         cnt[v[i]]++;
 
         if(c<=k){
+
             ans=max(ans,pre[i]-pre[start-1]);
 
         }else if(c>k){
-
+int a=1;
             for(ll j=start; j<=i; j++){
                 cnt[v[j]]--;
                 start++;
