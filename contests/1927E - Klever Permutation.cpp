@@ -43,7 +43,7 @@ void mine(){
 
     bool f=0;
 
-    int c=1;
+    // int c=1;
 
     // cout<<"even "<<even<<endl;
 
@@ -51,7 +51,7 @@ void mine(){
 
     while(1){
 
-        c++;
+        // c++;
 
         if(!f){
             for(int i=odd; i<=even; i++){
@@ -93,14 +93,15 @@ void mine(){
         if(cnt>n)break;
 
 
-        if(c==2*k)break;
+        // if(c==2*k)break;
 
     }
     
-    c=0;
+    // c=0;
     
     for1(i,ans.size()-1){
-        for(auto it:ans[i])cout<<it<<space,c++;
+        for(auto it:ans[i])cout<<it<<space;
+        // c++;
     }
 
 
